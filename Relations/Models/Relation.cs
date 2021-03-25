@@ -1,6 +1,6 @@
 namespace Relations.Models
 {
-    public class Relations
+    public class Relation
     {
         public int ItemId { get; set; }
         public string Description { get; set; }

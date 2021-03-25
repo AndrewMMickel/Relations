@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ToDoList.Models;
+using Relations.Models;
 
-namespace ToDoList
+namespace Relations
 {
     public class Startup
     {
@@ -25,7 +25,7 @@ namespace ToDoList
             services.AddMvc();
 
             services.AddEntityFrameworkMySql()
-                .AddDbContext<ToDoListContext>(options => options
+                .AddDbContext<RelationsContext>(options => options
                     .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 

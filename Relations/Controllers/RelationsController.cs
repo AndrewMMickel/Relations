@@ -18,7 +18,7 @@ namespace Relations.Controllers
 
         public ActionResult Index()
         {
-            List<Item> model = _db.Relations.Include(item => item.Category).ToList();
+            List<Relation> model = _db.Relations.Include(item => item.Category).ToList();
             return View(model);
         }
 
@@ -29,37 +29,37 @@ namespace Relations.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Item item)
+        public ActionResult Create(Relation item)
         {
-            _db.Items.Add(item);
+            _db.Relations.Add(item);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public ActionResult Details(int id)
         {
-            Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
+            Relation thisItem = _db.Relations.FirstOrDefault(item => item.ItemId == id);
             return View(thisItem);
         }
 
         public ActionResult Delete(int id)
         {
-            Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
+            Relation thisItem = _db.Relations.FirstOrDefault(item => item.ItemId == id);
             return View(thisItem);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
-            _db.Items.Remove(thisItem);
+            Relation thisItem = _db.Relations.FirstOrDefault(item => item.ItemId == id);
+            _db.Relations.Remove(thisItem);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
         {
-            Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
+            Relation thisItem = _db.Relations.FirstOrDefault(item => item.ItemId == id);
             ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
             return View(thisItem);
         }
